@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     if (subResult != 0) {
         int subErrno = errno;
         perror("unlink");
-        fprintf(stderr, "errno:%d\n", subErrno);
+        fprintf(stderr, "errno: %d\n", subErrno);
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
