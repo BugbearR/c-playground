@@ -4,7 +4,7 @@ OBJS=main.o
 .PHONY: all
 all: $(EXE)
 
-.PHONY: all
+.PHONY: clean
 clean:
 	-rm -f $(OBJS)
 
