@@ -1,4 +1,4 @@
-EXE=unixdomsock-client-exp
+EXE=unixdomsock_client_exp
 OBJS=main.o
 
 .PHONY: all
