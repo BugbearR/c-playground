@@ -4,7 +4,7 @@ OBJS=main.o
 .PHONY: all
 all: $(TARGET)
 
-.PHONY: all
+.PHONY: clean
 clean:
 	-rm -f $(OBJS)
 
