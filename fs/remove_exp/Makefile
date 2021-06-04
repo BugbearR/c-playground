@@ -1,14 +1,14 @@
-EXE=remove-exp
+TARGET=remove_exp
 OBJS=main.o
 
 .PHONY: all
-all: $(EXE)
+all: $(TARGET)
 
 .PHONY: all
 clean:
 	-rm -f $(OBJS)
 
-$(EXE): $(OBJS)
+$(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS)
 
 main.o: main.c
