@@ -1,15 +1,15 @@
-TARGET=hello
+EXE=hello
 OBJS=main.o
 
 .PHONY: all
-all: $(TARGET)
+all: $(EXE)
 
 .PHONY: clean
 clean:
 	-rm -f $(OBJS)
 
-$(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $(OBJS)
+$(EXE): $(OBJS)
+	$(CC) -o $@ $(OBJS)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c -o $@ $<
