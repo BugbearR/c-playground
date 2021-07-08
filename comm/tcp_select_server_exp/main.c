@@ -12,7 +12,8 @@
 #define LISTEN_BACK_LOG 10
 
 void fprintBytes(FILE *pFile, const char *pBuf, size_t size) {
-    for (size_t i = 0; i < size; i++) {
+    size_t i;
+    for (i = 0; i < size; i++) {
         if (i > 0) {
             fprintf(pFile, ", ");
         }
@@ -190,7 +191,7 @@ int main(int argc, char *argv[])
     struct sockaddr_un serverAddr = {0};
     serverAddr.sun_family = AF_UNIX;
     size_t pathLen = strlen(path);
-    size_t sunPathLen = sizeof(serverAddr.sun_path) - 1; 
+    size_t sunPathLen = sizeof(serverAddr.sun_path) - 1;
     if (pathLen > sunPathLen) {
         fprintf(stderr, "path too long. path: %zu,  sun.sun_path: %zu\n", pathLen, sunPathLen);
         goto EXIT_FUNC;
