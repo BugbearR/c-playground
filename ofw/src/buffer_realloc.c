@@ -13,6 +13,12 @@ Ofw_Result_t Ofw_Buffer_realloc(Ofw_Buffer_t *pThis, int32_t length, Ofw_Error_t
         goto FUNC_EXIT;
     }
 
+    if (pThis->length < 0)
+    {
+        error = Ofw_Error_INVALID_OBJECT;
+        goto FUNC_EXIT;
+    }
+
     uint8_t *pNewBuffer = realloc(pThis->pBuffer, length);
     if (!pNewBuffer)
     {

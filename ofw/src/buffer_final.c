@@ -10,6 +10,7 @@ void Ofw_Buffer_final(Ofw_Buffer_t *pThis)
         {
             free(pThis->pBuffer);
             pThis->pBuffer = NULL;
+            pThis->length = -1;
         }
     }
 }
