@@ -1,7 +1,9 @@
-#if !defined Ofw_Deque_h_
-#define Ofw_Deque_h_ 1
+#if !defined Ofw_Deque_H_
+#define Ofw_Deque_H_ 1
 
+#ifdef HAVE_PRAGMA_ONCE
 #pragma once
+#endif
 
 #include <stdint.h>
 
@@ -23,4 +25,4 @@ void Ofw_DequeItem_init(Ofw_DequeItem_t *pThis, Ofw_DequeItem_t *pNext, Ofw_Dequ
 
 void Ofw_Deque_init(Ofw_Deque_t *pThis);
 
-#endif /* Ofw_Deque_h_ */
+#endif /* Ofw_Deque_H_ */

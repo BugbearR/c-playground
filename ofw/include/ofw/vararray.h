@@ -1,7 +1,9 @@
-#if !defined Ofw_VarArray_h_
-#define Ofw_VarArray_h_ 1
+#if !defined Ofw_VarArray_H_
+#define Ofw_VarArray_H_ 1
 
+#ifdef HAVE_PRAGMA_ONCE
 #pragma once
+#endif
 
 #include <stdint.h>
 
@@ -18,4 +20,4 @@ void Ofw_VarArray_init(Ofw_VarArray_t *pThis, int32_t elementSize, int32_t lengt
 
 void *Ofw_VarArray_getPtr(Ofw_VarArray_t *pThis, int32_t pos);
 
-#endif /* Ofw_VarArray_h_ */
+#endif /* Ofw_VarArray_H_ */

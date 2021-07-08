@@ -1,5 +1,5 @@
-#if !defined Ofw_Error_h_
-#define Ofw_Error_h_ 1
+#if !defined Ofw_Error_H_
+#define Ofw_Error_H_ 1
 
 #ifdef HAVE_PRAGMA_ONCE
 #pragma once
@@ -341,4 +341,4 @@ typedef int32_t Ofw_Error_t;
  */
 #define Ofw_Error_convErrno(errno) (errno)
 
-#endif /* Ofw_Error_h_ */
+#endif /* Ofw_Error_H_ */

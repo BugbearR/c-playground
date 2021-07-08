@@ -1,7 +1,9 @@
-#if !defined Ofw_DblLink_h_
-#define Ofw_DblLink_h_ 1
+#if !defined Ofw_DblLink_H_
+#define Ofw_DblLink_H_ 1
 
+#ifdef HAVE_PRAGMA_ONCE
 #pragma once
+#endif
 
 typedef struct Ofw_DblLink_tag
 {
@@ -17,4 +19,4 @@ void Ofw_DblLink_insertAfter(Ofw_DblLink_t *pThis, Ofw_DblLink_t *pItem);
 
 void Ofw_DblLink_remove(Ofw_DblLink_t *pThis);
 
-#endif /* Ofw_DblLink_h_ */
+#endif /* Ofw_DblLink_H_ */
