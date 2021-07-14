@@ -1,4 +1,4 @@
-EXE=tcp-select-server-exp
+EXE=tcp_select_server_exp
 OBJS=main.o
 
 .PHONY: all
