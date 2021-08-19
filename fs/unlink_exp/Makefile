@@ -1,4 +1,4 @@
-TARGET=unink_exp
+TARGET=unlink_exp
 OBJS=main.o
 
 .PHONY: all
