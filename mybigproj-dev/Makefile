@@ -1,3 +1,5 @@
+# DON'T EDIT THIS Makefile!
+
 ifndef MYBIGPROJ_DEV_DIR
 	$(error ERROR: Please set environment variable MYBIGPROJ_DEV_DIR)
 endif

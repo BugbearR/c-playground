@@ -1,15 +1,15 @@
-EXE=tcp_select_server_exp
+TARGET=args
 OBJS=main.o
 
 .PHONY: all
-all: $(EXE)
+all: $(TARGET)
 
-.PHONY: all
+.PHONY: clean
 clean:
 	-rm -f $(OBJS)
 
-$(EXE): $(OBJS)
-	$(CC) -o $@ $(OBJS)
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $(OBJS)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c -o $@ $<
