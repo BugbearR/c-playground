@@ -1,0 +1,64 @@
+#define _XOPEN_SOURCE
+
+#include <errno.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <inttypes.h>
+
+void dumpTm(struct tm *pTm)
+{
+    printf("tm_year: %d\n", pTm->tm_year);
+    printf("tm_mon: %d\n", pTm->tm_mon);
+    printf("tm_mday: %d\n", pTm->tm_mday);
+    printf("tm_hour: %d\n", pTm->tm_hour);
+    printf("tm_min: %d\n", pTm->tm_min);
+    printf("tm_sec: %d\n", pTm->tm_sec);
+    printf("tm_wday: %d\n", pTm->tm_wday);
+    printf("tm_yday: %d\n", pTm->tm_yday);
+    printf("tm_isdst: %d\n", pTm->tm_isdst);
+}
+
+int main(int argc, char *argv[])
+{
+    int subResult;
+    time_t t;
+    struct tm tm;
+
+    if (argc < 8)
+    {
+        fprintf(stderr, "usage: %s tm_year tm_mon tm_mday tm_hour tm_min tm_sec tm_isdst\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    tm.tm_year = atoi(argv[1]);
+    tm.tm_mon = atoi(argv[2]);
+    tm.tm_mday = atoi(argv[3]);
+    tm.tm_hour = atoi(argv[4]);
+    tm.tm_min = atoi(argv[5]);
+    tm.tm_sec = atoi(argv[6]);
+    tm.tm_isdst = atoi(argv[7]);
+
+    errno = 0;
+    t = mktime(&tm);
+    int myErrno = errno;
+    printf("%s\n", strerror(myErrno));
+
+    printf("t: %" PRIdMAX "\n", (intmax_t)t);
+
+    printf("localtime\n");
+    dumpTm(localtime(&t));
+    printf("\n");
+
+    printf("gmtime\n");
+    dumpTm(gmtime(&t));
+    printf("\n");
+
+    time_t t2 = t - timezone;
+    printf("localtime - timezone\n");
+    dumpTm(localtime(&t2));
+    printf("\n");
+
+    return EXIT_SUCCESS;
+}
