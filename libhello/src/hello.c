@@ -1,4 +1,5 @@
 #include "hello/hello.h"
+#include "foo/foo.h"
 
 #include <stdio.h>
 
@@ -11,6 +12,7 @@ int mysub(int a, int b) {
 }
 
 int sayHello(char *pBuf, size_t bufLen, const char *pTo) {
-    int count = snprintf(pBuf, bufLen, "Hello, %s!", pTo);
+    int n = foo_hello();
+    int count = snprintf(pBuf, bufLen, "Hello, %s!, %d", pTo, n);
     return count;
 }
