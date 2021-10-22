@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+wait_new_journal
