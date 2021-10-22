@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+strerror_exp
