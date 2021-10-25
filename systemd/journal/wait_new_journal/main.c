@@ -3,12 +3,30 @@
 #include <stdlib.h>
 #include <systemd/sd-journal.h>
 #include <errno.h>
+#include <signal.h>
+
+typedef void (*my_sighandler_t)(int);
+
+volatile sig_atomic_t g_sigNo = 0;
+
+void signalHandler(int sigNo)
+{
+    g_sigNo = sigNo;
+}
 
 int main(void)
 {
     int subResult;
     int myErrno;
     sd_journal *j = NULL;
+    my_sighandler_t oldHandler;
+
+    oldHandler = signal(SIGUSR1, signalHandler);
+    if (oldHandler == SIG_ERR)
+    {
+        perror("signal");
+        exit(EXIT_FAILURE);
+    }
 
     subResult = sd_journal_open(&j, 0);
     if (subResult < 0)
@@ -52,7 +70,8 @@ int main(void)
         }
         if (subResult == 0)
         {
-            subResult = sd_journal_wait(j, (uint64_t) 1000000);
+            // sd_journal_wait doesn't return EINTR
+            subResult = sd_journal_wait(j, (uint64_t) 10000000);
             if (subResult < 0)
             {
                 myErrno = -subResult;
