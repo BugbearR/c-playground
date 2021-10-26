@@ -81,7 +81,13 @@ int main(void)
         }
 
         subResult = sd_journal_get_data(j, "MESSAGE", &pData, &dataLen);
-        printf("MESSAGE: %.*s\n", (int)dataLen, (const char *)pData);
+        if (subResult != 0) {
+            myErrno = -subResult;
+            fprintf(stderr, "sd_journal_get_data:%s\n", strerror(myErrno));
+        }
+        else {
+            printf("MESSAGE: %.*s\n", (int)dataLen, (const char *)pData);
+        }
     }
 
 EXIT_FUNC:
