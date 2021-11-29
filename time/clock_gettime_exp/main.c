@@ -88,6 +88,11 @@ int main(int argc, char *argv[])
     }
 
     subResult = clock_gettime(clockType, &ts);
+    if (subResult != 0)
+    {
+        perror("clock_gettime");
+        return EXIT_FAILURE;
+    }
     printf("%" PRIdMAX ".%09" PRIdMAX "\n", (intmax_t)ts.tv_sec, (intmax_t)ts.tv_nsec);
 
     printf("ctime:%s\n", ctime(&ts.tv_sec));

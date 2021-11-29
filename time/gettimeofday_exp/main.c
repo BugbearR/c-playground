@@ -11,6 +11,11 @@ int main(void)
     struct tm *pTm;
 
     subResult = gettimeofday(&tv, NULL);
+    if (subResult != 0)
+    {
+        perror("gettimeofday");
+        return EXIT_FAILURE;
+    }
     printf("%" PRIdMAX ".%06" PRIdMAX "\n", (intmax_t)tv.tv_sec, (intmax_t)tv.tv_usec);
 
     printf("ctime:%s\n", ctime(&tv.tv_sec));
