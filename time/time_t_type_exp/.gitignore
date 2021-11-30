@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+time_t_type_exp
