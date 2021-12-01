@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+seek_cursor_exp

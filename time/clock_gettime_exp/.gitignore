@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+clock_gettime_exp

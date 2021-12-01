@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+wait_new_journal

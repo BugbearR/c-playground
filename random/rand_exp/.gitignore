@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+rand_exp

@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+initialize_struct_exp

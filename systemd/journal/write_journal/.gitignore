@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+write_journal

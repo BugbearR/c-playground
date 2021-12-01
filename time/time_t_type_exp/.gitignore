@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+time_t_type_exp

@@ -2,4 +2,4 @@
 *.o
 
 # executable
-strptime_exp
+strerror_exp
