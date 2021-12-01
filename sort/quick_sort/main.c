@@ -15,15 +15,23 @@ int mycompare(const void *p1, const void *p2, void *pInfo)
 #define ofw_Array_getPtrM(pBase, sz, n) \
     ((void *)(((char *)pBase) + (sz) * (n)))
 
-void partition(void *pBase, size_t sz, int n, int(*compareFn)(const void *p1, const void *p2, void *pInfo), void *pInfo)
+char *partition(char *pBase, size_t sz, int n, int(*compareFn)(const void *p1, const void *p2, void *pInfo), void *pInfo)
 {
     char *pLo = pBase;
     char *pHi = ofw_Array_getPtrM(pBase, sz, n - 1);
     char *pMid = ofw_Array_getPtrM(pBase, sz, n / 2);
 
-    if (compareFn(pLo, m) > 0)
+    if (compareFn(pLo, pMid, pInfo) > 0)
     {
         swap(pLo, pMid, sz);
+    }
+    if (compareFn(pMid, pHi, pInfo) > 0)
+    {
+        swap(pLo, pMid, sz);
+        if (compareFn(pLo, pMid, pInfo) > 0)
+        {
+            swap(pLo, pMid, sz);
+        }
     }
 
     while (1)
@@ -38,6 +46,9 @@ void partition(void *pBase, size_t sz, int n, int(*compareFn)(const void *p1, co
             pHi -= sz;
         }
         if (pLo >= pHi)
+        {
+            return pHi + sz;
+        }
 
         swap(pLo, pHi, sz);
 
@@ -45,18 +56,22 @@ void partition(void *pBase, size_t sz, int n, int(*compareFn)(const void *p1, co
         {
             pMid = pHi;
         }
-        else (pHi == pMid)
+        else if (pHi == pMid)
         {
             pMid = pLo;
         }
         pLo += sz;
-        pHi += sz;
+        pHi -= sz;
     }
 }
 
 void quickSort(void *pBase, size_t sz, int n, int(*compareFn)(const void *p1, const void *p2, void *pInfo), void *pInfo)
 {
-    void *pLo =
+    char *p = partition(pBase, sz, n, compareFn, pInfo);
+    char *nLo = (p - (char *)pBase) / sz;
+    char *nNi = ((char *)ofw_Array_getPtrM(pBase, sz, n) - p) / sz;
+    quickSort(pBase, sz, n, compareFn, pInfo);
+    quickSort(p, sz, n, compareFn, pInfo);
 }
 
 int main(int argc, char *argv[])
