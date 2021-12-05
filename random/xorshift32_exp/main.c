@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
+#include <time.h>
+#include <sys/time.h>
 
 typedef struct Xorshift32_tag
 {
@@ -36,7 +38,15 @@ int main(int argc, char *argv[])
     }
     else
     {
-        Xorshift32_init(&prng, 0);
+        struct timespec ts;
+        int subResult = clock_gettime(CLOCK_REALTIME, &ts);
+        if (subResult != 0)
+        {
+            perror("clock_gettime");
+            return EXIT_FAILURE;
+        }
+        uint32_t seed = (uint32_t)(ts.tv_nsec >> 32) ^ (uint32_t) ts.tv_nsec ^ (uint32_t)(ts.tv_sec >> 32) ^ (uint32_t) ts.tv_sec;
+        Xorshift32_init(&prng, seed);
     }
 
     for (i = 0; i < 10; i++)
