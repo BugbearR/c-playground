@@ -1,5 +1,5 @@
-TARGET=libdumpsimple.a
-OBJS=dumpsimple.o
+TARGET=../lib/libdumpout.a
+OBJS=dumpout.o
 
 .PHONY: all
 all: $(TARGET)
@@ -9,7 +9,7 @@ clean:
 	-rm -f $(OBJS)
 
 $(TARGET): $(OBJS)
-	$(AR) -r -u $@ $(OBJS)
+	$(AR) -r $@ $(OBJS)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c -o $@ $<
