@@ -1,5 +1,5 @@
-TARGET=libdumpsimple.a
-OBJS=dumpsimple.o
+TARGET=regexp_exp
+OBJS=main.o
 
 .PHONY: all
 all: $(TARGET)
@@ -9,7 +9,7 @@ clean:
 	-rm -f $(OBJS)
 
 $(TARGET): $(OBJS)
-	$(AR) -r -u $@ $(OBJS)
+	$(CC) -o $@ $(OBJS)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c -o $@ $<

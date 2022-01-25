@@ -1,7 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dumpSimple(const void *pBuf, size_t bufLen)
+void dumpOut(const void *pBuf, size_t bufLen)
+{
+    size_t remain;
+    const char *p = (const char *)pBuf;
+    printf("%02hhx", *p++);
+    for (remain = bufLen - 1; remain > 0; --remain)
+    {
+        printf(" %02hhx", *p++);
+    }
+}
+
+void dumpOutWithAddr(const void *pBuf, size_t bufLen)
 {
     size_t i;
     const char *p = (const char *)pBuf;
@@ -11,7 +22,7 @@ void dumpSimple(const void *pBuf, size_t bufLen)
     {
         if (i % 16 == 0)
         {
-            printf("%04x", i);
+            printf("%04zx", i);
         }
         printf(" %02hhx", p[i]);
         if (i % 16 == 15)
