@@ -3,75 +3,94 @@
 
 #define DATA_COUNT (100)
 
-int mycompare(const void *p1, const void *p2, void *pInfo)
+int mycompare(void *pObj, int idx1, int idx2)
 {
-    int d1 = *(int *)p1;
-    int d2 = *(int *)p2;
+    int *p = pObj;
+
+    int d1 = p[idx1];
+    int d2 = p[idx2];
     if (d1 < d2) return -1;
     if (d1 > d2) return 1;
     return 0;
 }
 
-#define ofw_Array_getPtrM(pBase, sz, n) \
-    ((void *)(((char *)pBase) + (sz) * (n)))
-
-char *partition(char *pBase, size_t sz, int n, int(*compareFn)(const void *p1, const void *p2, void *pInfo), void *pInfo)
+void myswap(void *pObj, int idx1, int idx2)
 {
-    char *pLo = pBase;
-    char *pHi = ofw_Array_getPtrM(pBase, sz, n - 1);
-    char *pMid = ofw_Array_getPtrM(pBase, sz, n / 2);
+    int *p = pObj;
 
-    if (compareFn(pLo, pMid, pInfo) > 0)
-    {
-        swap(pLo, pMid, sz);
-    }
-    if (compareFn(pMid, pHi, pInfo) > 0)
-    {
-        swap(pLo, pMid, sz);
-        if (compareFn(pLo, pMid, pInfo) > 0)
-        {
-            swap(pLo, pMid, sz);
-        }
+    int tmp = p[idx1];
+    p[idx1] = p[idx2];
+    p[idx2] = tmp;
+}
+
+int partition(void *pObj, int fromIdx, int toIdx,
+    int (*compareFn)(void *pObj, int idx1, int idx2),
+    void (*swapFn)(void *pObj, int idx1, int idx2))
+{
+    if (toIdx - fromIdx <= 1) {
+        return fromIdx + 1;
     }
 
-    while (1)
+    int lo = fromIdx;
+    int hi = toIdx - 1;
+    int mid = fromIdx + (hi - lo) / 2;
+
+    if (compareFn(pObj, lo, mid) > 0)
     {
-        while (compareFn(pLo, pMid, pInfo) < 0)
+        swapFn(pObj, lo, mid);
+    }
+    if (compareFn(pObj, mid, hi) > 0)
+    {
+        swapFn(pObj, mid, hi);
+        if (compareFn(pObj, lo, mid) > 0)
         {
-            pLo += sz;
+            swapFn(pObj, lo, mid);
+        }
+    }
+
+    for (;;)
+    {
+        while (compareFn(pObj, lo, mid) < 0)
+        {
+            lo++;
+        }
+        while (compareFn(pObj, mid, hi) < 0)
+        {
+            hi--;
+        }
+        if (lo >= hi)
+        {
+            return hi + 1;
         }
 
-        while (compareFn(pMid, pHi, pInfo) < 0)
+        swapFn(pObj, lo, hi);
+
+        // if mid is swapped, update mid.
+        if (lo == mid)
         {
-            pHi -= sz;
+            mid = hi;
         }
-        if (pLo >= pHi)
+        else if (hi == mid)
         {
-            return pHi + sz;
+            mid = lo;
         }
 
-        swap(pLo, pHi, sz);
-
-        if (pLo == pMid)
-        {
-            pMid = pHi;
-        }
-        else if (pHi == pMid)
-        {
-            pMid = pLo;
-        }
-        pLo += sz;
-        pHi -= sz;
+        lo++;
+        hi--;
     }
 }
 
-void quickSort(void *pBase, size_t sz, int n, int(*compareFn)(const void *p1, const void *p2, void *pInfo), void *pInfo)
+void quickSort(void *pObj, int fromIdx, int toIdx,
+    int (*compareFn)(void *pObj, int fromIdx, int toIdx),
+    void (*swapFn)(void *pObj, int fromIdx, int toIdx))
 {
-    char *p = partition(pBase, sz, n, compareFn, pInfo);
-    char *nLo = (p - (char *)pBase) / sz;
-    char *nNi = ((char *)ofw_Array_getPtrM(pBase, sz, n) - p) / sz;
-    quickSort(pBase, sz, n, compareFn, pInfo);
-    quickSort(p, sz, n, compareFn, pInfo);
+    if (toIdx - fromIdx <= 1)
+    {
+        return;
+    }
+    int partIdx = partition(pObj, fromIdx, toIdx, compareFn, swapFn);
+    quickSort(pObj, fromIdx, partIdx, compareFn, swapFn);
+    quickSort(pObj, partIdx, toIdx, compareFn, swapFn);
 }
 
 int main(int argc, char *argv[])
@@ -91,7 +110,7 @@ int main(int argc, char *argv[])
         d[i] = rand();
     }
 
-    qsort(d, DATA_COUNT, sizeof(int), mycompare);
+    quickSort(d, 0, DATA_COUNT, mycompare, myswap);
 
     for (i = 0; i < DATA_COUNT; i++)
     {

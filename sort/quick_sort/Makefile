@@ -1,5 +1,6 @@
-TARGET=qsort_exp
+TARGET=quick_sort
 OBJS=main.o
+CFLAGS=-g
 
 .PHONY: all
 all: $(TARGET)
