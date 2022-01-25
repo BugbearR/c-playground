@@ -1,5 +1,6 @@
 TARGET=hello
 OBJS=main.o
+CFLAGS=-g
 
 .PHONY: all
 all: $(TARGET)
