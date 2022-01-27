@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+print_type_exp
