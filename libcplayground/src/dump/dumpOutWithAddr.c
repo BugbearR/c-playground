@@ -1,18 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dumpOut(const void *pBuf, size_t bufLen)
-{
-    size_t remain;
-    const char *p = (const char *)pBuf;
-    printf("%02hhx", *p++);
-    for (remain = bufLen - 1; remain > 0; --remain)
-    {
-        printf(" %02hhx", *p++);
-    }
-}
+#include "cplayground/dump.h"
 
-void dumpOutWithAddr(const void *pBuf, size_t bufLen)
+void cplayground_dumpOutWithAddr(const void *pBuf, size_t bufLen)
 {
     size_t i;
     const char *p = (const char *)pBuf;
