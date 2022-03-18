@@ -9,6 +9,10 @@
 
 void cplayground_dump(const void *pBuf, size_t bufLen);
 
+void cplayground_fdump(FILE *pFile, const void *pBuf, size_t bufLen);
+
 void cplayground_dumpWithAddr(const void *pBuf, size_t bufLen);
+
+void cplayground_fdumpWithAddr(FILE *pFile, const void *pBuf, size_t bufLen);
 
 #endif /* CPLAYGROUND_DUMP_H_ */

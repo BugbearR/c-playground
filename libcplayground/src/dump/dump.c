@@ -5,11 +5,5 @@
 
 void cplayground_dump(const void *pBuf, size_t bufLen)
 {
-    size_t remain;
-    const char *p = (const char *)pBuf;
-    printf("%02hhx", *p++);
-    for (remain = bufLen - 1; remain > 0; --remain)
-    {
-        printf(" %02hhx", *p++);
-    }
+    cplayground_fdump(stdout, pBuf, bufLen);
 }
