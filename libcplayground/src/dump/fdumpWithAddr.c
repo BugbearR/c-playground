@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "cplayground/dump.h"
 
 void cplayground_fdumpWithAddr(FILE *pFile, const void *pBuf, size_t bufLen)

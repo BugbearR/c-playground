@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <stddef.h>
+#include <stdio.h>
 
 void cplayground_dump(const void *pBuf, size_t bufLen);
 
