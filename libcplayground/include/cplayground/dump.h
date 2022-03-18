@@ -3,8 +3,8 @@
 
 #include <stddef.h>
 
-void cplayground_dumpOut(const void *pBuf, size_t bufLen);
+void cplayground_dump(const void *pBuf, size_t bufLen);
 
-void cplayground_dumpOutWithAddr(const void *pBuf, size_t bufLen);
+void cplayground_dumpWithAddr(const void *pBuf, size_t bufLen);
 
 #endif /* CPLAYGROUND_DUMPOUT_H_ */

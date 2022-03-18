@@ -3,7 +3,7 @@
 
 #include "cplayground/dump.h"
 
-void cplayground_dumpOut(const void *pBuf, size_t bufLen)
+void cplayground_dump(const void *pBuf, size_t bufLen)
 {
     size_t remain;
     const char *p = (const char *)pBuf;
