@@ -56,6 +56,12 @@ int main(int argc, char *argv[])
             goto EXIT_FUNC;
         }
 
+        // chomp
+        int lineLen = strlen(buf);
+        if (lineLen > 0 && buf[lineLen - 1] == '\n') {
+            buf[lineLen - 1] = '\0';
+        }
+
         char *p = &buf[0];
         int isFirst = 1;
         for (;;)
