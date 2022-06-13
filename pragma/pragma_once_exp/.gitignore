@@ -1,0 +1,8 @@
+# intermediate files
+*.o
+
+# executable
+pragma_once_exp
+
+# test
+result.txt
