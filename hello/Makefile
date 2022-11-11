@@ -5,6 +5,10 @@ CFLAGS=-g
 .PHONY: all
 all: $(TARGET)
 
+.PHONY: run
+run: $(TARGET)
+	./$(TARGET)
+
 .PHONY: clean
 clean:
 	-rm -f $(OBJS)
