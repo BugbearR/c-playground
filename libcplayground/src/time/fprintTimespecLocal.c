@@ -19,7 +19,7 @@ void cplayground_fprintTimespecLocal(FILE *pFile, struct timespec *pTimespec)
 #else
     memcpy(&tm, localtime(&pTimespec->tv_sec), sizeof(tm));
 #endif
-    fprintf(pFile, "%04d-%02d-%02d %02d:%02d:%02d.%09d isdst:%d",
+    fprintf(pFile, "%04d-%02d-%02d %02d:%02d:%02d.%09ld isdst:%d",
         tm.tm_year + 1900,
         tm.tm_mon + 1,
         tm.tm_mday,

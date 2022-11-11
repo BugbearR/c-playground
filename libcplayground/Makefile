@@ -1,10 +1,11 @@
 # for GNU make
 include Makefile.local.mk
 BUILD_CONF ?= release
-CFLAGS ?= -g
+CFLAGS ?= -g -DHAVE_PRAGMA_ONCE=1
 CUR_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 TARGET_BASE_NAME ?= $(notdir $(CUR_DIR:%/=%))
 TARGET ?= $(TARGET_BASE_NAME).a
+TARGET_LIB_NAME ?= $(patsubst lib%,%,$(TARGET_BASE_NAME))
 SO_MAJOR_VERSION ?= 0
 SO_MINOR_VERSION ?= 0
 SO_PATCH_VERSION ?= 0
@@ -18,6 +19,8 @@ INCLUDE_DIR ?= include
 
 BUILD_FULL_DIR = $(BUILD_DIR)/$(BUILD_CONF)
 DIST_FULL_DIR = $(DIST_DIR)/$(BUILD_CONF)
+
+TARGET_LIB_DIR = $(DIST_FULL_DIR)/lib
 TARGET_LIB_FULL = $(DIST_FULL_DIR)/lib/$(TARGET)
 TARGET_LIB_SO_FULL = $(DIST_FULL_DIR)/lib/$(TARGET_SO)
 INSTALL_LIB_DIR ?= $(CUR_DIR)/../lib
@@ -40,6 +43,10 @@ install: all
 .PHONY: clean
 clean:
 	-rm -rf $(BUILD_FULL_DIR)
+
+.PHONY: test
+test: $(TARGET_LIB_FULL)
+	$(MAKE) -C test test
 
 $(TARGET_LIB_SO_FULL): $(OBJS)
 	@mkdir -p $$(dirname "$@")
