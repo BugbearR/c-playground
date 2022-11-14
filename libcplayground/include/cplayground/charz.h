@@ -18,4 +18,4 @@ size_t cplayground_charz_length(const char *p);
 
 // char *cplayground_trimEnd(char *p, size_t bufLen);
 
-#endif /* CPLAYGROUND_STRING_H_ */
+#endif /* CPLAYGROUND_CHARZ_H_ */
