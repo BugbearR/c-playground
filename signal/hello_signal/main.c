@@ -25,7 +25,7 @@ void mySignalHandler(int sigNo, siginfo_t *pInfo, void *pCtx)
 
     g_sigNo = sigNo;
     clock_gettime(CLOCK_REALTIME, &ts);
-    snprintf(fileName, sizeof(buf), "signal_%010d", (int)g_serial);
+    snprintf(fileName, sizeof(fileName), "signal_%010d", (int)g_serial);
     g_serial++;
     fd = open(fileName, O_CREAT | O_WRONLY, S_IRUSR);
     snprintf(buf, sizeof(buf), "%" PRIdMAX ".%09ld\n", (intmax_t)ts.tv_sec, ts.tv_nsec);
