@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     if (subResult != 0) {
         myErrno = errno;
         perror("execve");
-        printf("errno: %d, strerror: %s\n", errno, strerror(errno));
+        printf("errno: %d, strerror: %s\n", myErrno, strerror(myErrno));
     }
 
     return EXIT_FAILURE;
