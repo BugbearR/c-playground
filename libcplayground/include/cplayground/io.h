@@ -8,7 +8,7 @@
 #include <stddef.h>
 
 /**
- * @brief write exaxt bytes
+ * @brief Write exaxt bytes
  *
  * @param fd - file descriptor
  * @param pBuf - buffer to write
@@ -20,7 +20,7 @@
 int cplayground_io_writeExact(int fd, const char *pBuf, size_t bufLen, size_t *pResultLen);
 
 /**
- * @brief write exaxt bytes
+ * @brief Read exaxt bytes
  *
  * @param fd - file descriptor
  * @param pBuf - buffer to write
