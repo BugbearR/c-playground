@@ -4,6 +4,7 @@
 
 int main(int argc, char *argv[])
 {
+    test_cplayground_charz_copy();
     test_cplayground_charz_isBlank();
     test_cplayground_charz_isEmpty();
     test_cplayground_charz_length();
