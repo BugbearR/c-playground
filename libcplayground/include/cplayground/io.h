@@ -29,6 +29,6 @@ int cplayground_io_writeExact(int fd, const char *pBuf, size_t bufLen, size_t *p
  * @retval 0 no error
  * @retval -1: error
  */
-int cplayground_io_readExact(int fd, const char *pBuf, size_t bufLen, size_t *pResultLen);
+int cplayground_io_readExact(int fd, char *pBuf, size_t bufLen, size_t *pResultLen);
 
 #endif /* CPLAYGROUND_IO_H_ */

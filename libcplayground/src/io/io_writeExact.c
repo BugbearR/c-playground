@@ -24,7 +24,7 @@ int cplayground_io_writeExact(int fd, const char *pBuf, size_t bufLen, size_t *p
 
 EXIT_FUNC:
     if (pResultLen) {
-        pResultLen = pCur - pBuf;
+        *pResultLen = pCur - pBuf;
     }
 
     return result;

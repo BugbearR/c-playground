@@ -2,11 +2,11 @@
 
 #include <unistd.h>
 
-int cplayground_io_readExact(int fd, const char *pBuf, size_t bufLen, size_t *pResultLen)
+int cplayground_io_readExact(int fd, char *pBuf, size_t bufLen, size_t *pResultLen)
 {
     int result = -1;
-    const char *pCur = pBuf;
-    const char *pEnd = pBuf + bufLen;
+    char *pCur = pBuf;
+    char *pEnd = pBuf + bufLen;
     ssize_t subResultLen;
     while (pCur < pEnd) {
         subResultLen = read(fd, pCur, pEnd - pCur);
@@ -24,7 +24,7 @@ int cplayground_io_readExact(int fd, const char *pBuf, size_t bufLen, size_t *pR
 
 EXIT_FUNC:
     if (pResultLen) {
-        pResultLen = pCur - pBuf;
+        *pResultLen = pCur - pBuf;
     }
 
     return result;
