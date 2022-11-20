@@ -10,7 +10,7 @@
 int parentProc(pid_t childPid, int count, int sleepTimeUs)
 {
     int i;
-    int childStatus;
+    int childStatus = 0;
 
     printf("child pid: %d\n", childPid);
 
