@@ -27,7 +27,7 @@ SRCS = $(wildcard $(SRC_DIR)/**/*.c $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%,$(BUILD_FULL_DIR)/%,$(patsubst %.c,%.o,$(SRCS)))
 DEPENDS = $(patsubst $(SRC_DIR)/%,$(BUILD_FULL_DIR)/%,$(patsubst %.c,%.d,$(SRCS)))
 
-FULL_CFLAGS = $(CFLAGS) -I$(TEST_TARGET_INCLUDE_DIR) -I$(INCLUDE_DIR) $(INCLUDE_DIRS:%=-I%) $(DEFINES:%=-D%)
+FULL_CFLAGS = $(CFLAGS) -I$(INCLUDE_DIR) -I$(TEST_TARGET_INCLUDE_DIR) $(INCLUDE_DIRS:%=-I%) $(DEFINES:%=-D%)
 
 TARGET_FULL = $(TARGET_DIR)/$(TARGET)
 

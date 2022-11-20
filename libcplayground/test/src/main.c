@@ -1,9 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "test/cplayground/charz.h"
+#include <test/cplayground/array.h>
+#include <test/cplayground/charz.h>
 
 int main(int argc, char *argv[])
 {
+    test_cplayground_array_clear();
+    test_cplayground_array_fill();
+
     test_cplayground_charz_copy();
     test_cplayground_charz_isBlank();
     test_cplayground_charz_isEmpty();
