@@ -1,4 +1,4 @@
-#include "cplayground/xorshift.h"
+#include <cplayground/xorshift.h>
 
 void cplayground_xorshift32_init(cplayground_xorshift32_t *pThis, uint32_t seed)
 {

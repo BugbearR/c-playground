@@ -1,5 +1,4 @@
-#include <stdint.h>
-#include <stddef.h>
+#include <cplayground/fnv1a.h>
 
 #include "fnv1a_local.h"
 
