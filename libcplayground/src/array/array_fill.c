@@ -8,7 +8,8 @@ void cplayground_array_fill(void *pArray, size_t elmSize, size_t index, size_t l
     char *pStart = pBase + elmSize * index;
     char *pEnd = pStart + elmSize * len;
     char *p;
-    for (p = pStart; p < pEnd; p += elmSize) {
+    for (p = pStart; p < pEnd; p += elmSize)
+    {
         memcpy(p, pValue, elmSize);
     }
 }
