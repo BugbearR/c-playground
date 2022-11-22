@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
     test_cplayground_charz_isBlank();
     test_cplayground_charz_isEmpty();
     test_cplayground_charz_length();
+    test_cplayground_charz_trimEnd();
+    test_cplayground_charz_trimStart();
 
     printf("OK\n");
     return EXIT_SUCCESS;

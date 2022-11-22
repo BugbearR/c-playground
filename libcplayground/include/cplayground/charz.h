@@ -14,7 +14,9 @@ bool cplayground_charz_isEmpty(const char *p);
 
 size_t cplayground_charz_length(const char *p);
 
-// char *cplayground_trimEnd(char *p);
+char *cplayground_charz_trimEnd(char *p);
+
+char *cplayground_charz_trimStart(char *p);
 
 // char *cplayground_trimEnd(char *p, size_t bufLen);
 
