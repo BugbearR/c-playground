@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
 {
     test_cplayground_array_clear();
     test_cplayground_array_fill();
+    test_cplayground_array_insertSpace();
 
     test_cplayground_charz_copy();
     test_cplayground_charz_isBlank();

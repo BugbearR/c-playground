@@ -3,6 +3,25 @@
 #include <assert.h>
 #include <stdint.h>
 
+void test_cplayground_array_fill_bound()
+{
+    int32_t n[5];
+    int32_t v = 0x87654321;
+
+    n[0] = 0x12345678;
+    n[1] = 0x9abcdef1;
+    n[2] = 0x23456789;
+    n[3] = 0xabcdef12;
+    n[4] = 0x34567890;
+
+    cplayground_array_fill(&n[1], sizeof(n[0]), 0, 3, &v);
+    assert(n[0] == 0x12345678);
+    assert(n[1] == v);
+    assert(n[2] == v);
+    assert(n[3] == v);
+    assert(n[4] == 0x34567890);
+}
+
 void test_cplayground_array_fill_all()
 {
     int32_t n[4];
@@ -59,4 +78,5 @@ void test_cplayground_array_fill()
     test_cplayground_array_fill_all();
     test_cplayground_array_fill_part();
     test_cplayground_array_fill_none();
+    test_cplayground_array_fill_bound();
 }
