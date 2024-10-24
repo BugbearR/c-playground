@@ -1,6 +1,7 @@
 services:
-  devcontainer:
+  workspace:
     build: ./workspace/docker
-    tty: true
     volumes:
       - ../:/home/vscode/workspace
+    tty: true
+    stdin_open: true
