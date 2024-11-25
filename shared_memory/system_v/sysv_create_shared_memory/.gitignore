@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+sysv_create_shared_memory
