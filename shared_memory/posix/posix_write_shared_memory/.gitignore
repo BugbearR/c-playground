@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+posix_write_shared_memory
