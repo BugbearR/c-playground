@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     name = argv[1];
     int size = atoi(argv[2]);
 
-    int fd = shm_open(name, oflag, 0666);
+    int fd = shm_open(name, oflag,  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
     if (fd == -1)
     {
         perror("shm_open");
