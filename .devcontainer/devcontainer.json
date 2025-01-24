@@ -6,13 +6,15 @@
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
     // "remoteUser": "vscode",
-    "workspaceFolder": "/home/vscode/workspace",
+    "workspaceFolder": "/home/vscode/c-playground",
     "customizations": {
         "vscode": {
             "extensions": [
                 "ms-azuretools.vscode-docker",
                 "EditorConfig.EditorConfig",
-                "shardulm94.trailing-spaces"
+                "shardulm94.trailing-spaces",
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack"
             ]
         }
     },
