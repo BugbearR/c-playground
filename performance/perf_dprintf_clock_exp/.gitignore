@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+perf_dprintf_clock_exp
