@@ -1,0 +1,5 @@
+# intermediate files
+*.o
+
+# executable
+pthread_rwlock_read_sysv_shm
