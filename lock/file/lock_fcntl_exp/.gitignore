@@ -1,2 +1,5 @@
-lock_fcntl_exp
+# intermediate files
 *.o
+
+# executable
+lock_fcntl_exp
