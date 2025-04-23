@@ -1,8 +1,8 @@
-#include "BinarySearch.h"
+#include "BinarySearchElement.h"
 
 #include <stdio.h>
 
-int BinarySearch_search(
+int BinarySearchElement_search(
     void *pObj,
     int count,
     int (*fnCompare)(void *pObj, int idx)
@@ -11,10 +11,12 @@ int BinarySearch_search(
     int lo = 0;
     int hi = count - 1;
     int mid;
+    int tryCount = 0;
 
     while (hi >= lo) {
         mid = lo + (hi - lo) / 2;
-        printf("lo: %d, hi: %d, mid: %d\n", lo, hi, mid);
+        tryCount++;
+        printf("try: %d, lo: %d, hi: %d, mid: %d\n", tryCount, lo, hi, mid);
         int cmp = fnCompare(pObj, mid);
         if (cmp > 0) {
             hi = mid - 1;
