@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
     int myErrno;
-    intmax_t r;
+    unsigned long long r;
     char *pEnd = NULL;
     if (argc < 3) {
         fprintf(stderr, "usage: %s number_string base\n", argv[0]);
@@ -13,12 +13,12 @@ int main(int argc, char *argv[]) {
     }
     int base = atoi(argv[2]);
     errno = 0;
-    r = strtoimax(argv[1], &pEnd, base);
+    r = strtoull(argv[1], &pEnd, base);
     myErrno = errno;
     if (errno != 0) {
-        perror("strtoimax");
+        perror("strtoull");
     }
-    printf("result: %" PRIdMAX "\n", r);
+    printf("result: %llu\n", r);
     printf("errno: %d\n", myErrno);
     printf("pEnd: %s\n", pEnd);
     return EXIT_SUCCESS;
