@@ -1,3 +1,6 @@
+// for SSIZE_MAX
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdint.h>
 #include <inttypes.h>
 #include <sys/types.h>
@@ -78,8 +81,10 @@ int main(int argc, char *argv[])
     size_t sizeMax = SIZE_MAX;
     printf("SIZE_MAX: %zu\n", sizeMax);
 
+#ifdef SSIZE_MAX
     ssize_t ssizeMax = SSIZE_MAX;
     printf("SSIZE_MAX: %zd\n", ssizeMax);
+#endif
 
     int8_t int8Min = INT8_MIN;
     printf("INT8_MIN: %"PRId8"\n", int8Min);
