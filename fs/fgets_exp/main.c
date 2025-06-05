@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 #include <errno.h>
 #include <unistd.h>
 
@@ -35,40 +36,57 @@ int main(int argc, char *argv[])
     int result = EXIT_FAILURE;
     int subResult;
     FILE *pFile = NULL;
-    char buf[40 + 1];
+    int bufLen;
+    char *pBuf = NULL;
     char *pLine = NULL;
 
-    if (argc < 2)
+    if (argc < 3)
     {
-        fprintf(stderr, "usage: %s path\n", argv[0]);
+        fprintf(stderr, "usage: %s path buffer_length\n", argv[0]);
         return EXIT_FAILURE;
     }
+
+    bufLen = atoi(argv[2]);
+
+    pBuf = malloc(bufLen + 1); // +1 for end of string
+    pBuf[bufLen] = '\0';
 
     pFile = fopen(argv[1], "rt");
 
     for (;;)
     {
-        memset(buf, 'X', sizeof(buf));
+        // fill by dummy data
+        memset(pBuf, 'X', bufLen);
         errno = 0;
-        pLine = fgets(buf, sizeof(buf), pFile);
+        pLine = fgets(pBuf, bufLen, pFile);
+        int subErrno = errno;
+        fprintf(stderr, "errno: %d\n", subErrno);
         if (!pLine)
         {
-            int subErrno = errno;
             if (feof(pFile))
             {
                 break;
             }
-            fprintf(stderr, "fgets: %s", strerror(subErrno));
-            fprintf(stderr, "errno: %d\n", subErrno);
+            if (ferror(pFile))
+            {
+                fprintf(stderr, "fgets: stream error.\n");
+            }
+            fprintf(stderr, "fgets: %s\n", strerror(subErrno));
             goto EXIT_FUNC;
         }
         printf("----------\n");
-        dumpArray(buf, sizeof(buf));
+        printf("\"%s\"\n", pLine);
+        dumpArray(pBuf, bufLen);
     }
 
     result = EXIT_SUCCESS;
 
 EXIT_FUNC:
+    if (pBuf)
+    {
+        free(pBuf);
+    }
+
     if (pFile)
     {
         fclose(pFile);
