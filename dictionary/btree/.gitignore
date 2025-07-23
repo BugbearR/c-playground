@@ -1,0 +1,4 @@
+# Work directory
+build/
+# Output directory
+dist/
