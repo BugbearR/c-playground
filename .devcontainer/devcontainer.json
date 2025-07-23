@@ -1,27 +1,29 @@
 {
-    "name": "c-playground",
-    "dockerComposeFile": ["docker-compose.yml"],
-    "service": "workspace",
-	"remoteEnv": {
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-	},
-    // "remoteUser": "vscode",
-    "workspaceFolder": "/home/vscode/c-playground",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-azuretools.vscode-docker",
-                "EditorConfig.EditorConfig",
-                "shardulm94.trailing-spaces",
-                "ms-vscode.cpptools",
-                "ms-vscode.cpptools-extension-pack"
-            ]
-        }
-    },
-    "features": {
-        "docker-from-docker": {
-            "version": "latest",
-            "dockerDashComposeVersion": "v2"
-        }
+  "name": "c-playground",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "workspace",
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
+  // "remoteUser": "vscode",
+  "workspaceFolder": "/c-playground",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "EditorConfig.EditorConfig",
+        "shardulm94.trailing-spaces",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack"
+      ]
     }
+  },
+  "features": {
+    "docker-from-docker": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    }
+  }
 }

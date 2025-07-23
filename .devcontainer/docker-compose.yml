@@ -2,6 +2,6 @@ services:
   workspace:
     build: ./workspace/docker
     volumes:
-      - ../:/home/vscode/c-playground
+      - ../:/c-playground
     tty: true
     stdin_open: true
